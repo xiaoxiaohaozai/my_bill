@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_bili/routes/app_routes.dart';
 
 import '../common/utils/format_util.dart';
 import '../common/utils/image_utils.dart';
@@ -17,7 +18,7 @@ class HVideoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Routes.toVideoDetail(videoMo.vid!);
+         AppRoutes.toVideoDetail(videoMo.vid!);
       },
       child: Container(
         decoration:

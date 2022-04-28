@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import 'application.dart';
@@ -7,6 +8,7 @@ import 'global.dart';
 
 /// 启动程序
 Future<void> main() async{
+
   // 初始化全局配置
   await Global.init();
   // 启动应用

@@ -72,8 +72,8 @@ dependencies:
   # lottie 动画
   lottie: ^1.3.0
   # 视频播放器
-#  fijkplayer: ^0.10.1
-#  fijkplayer_skin: ^2.2.8
+  fijkplayer: ^0.10.1
+  fijkplayer_skin: ^2.2.8
   # 全局loading 和提示
   flutter_easyloading: ^3.0.3
   # 存储

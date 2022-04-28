@@ -51,7 +51,7 @@ class RecommendPage extends StatelessWidget {
                   crossAxisSpacing: 5.w,
                   itemBuilder: (context, index) {
                     return _buildVideoCard(index);
-                  })
+                  }),
             ],
           ),
         ),
