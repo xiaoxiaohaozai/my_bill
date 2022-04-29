@@ -1,0 +1,9 @@
+flutter_native_splash:
+  # 背景颜色
+  color: "#ffffff"
+  # 图标,需要png
+  image: assets/images/app_logo.png
+  android: true
+  ios: true
+  web: true
+  fullscreen: true

@@ -4,6 +4,7 @@ import 'package:my_bili/routes/app_routes.dart';
 
 import '../modules/frame/frame_page.dart';
 import '../modules/login/login_page.dart';
+import '../modules/video_detail/video_detail_page.dart';
 
 class AppPages {
   static final List<GetPage> pages = [
@@ -13,7 +14,10 @@ class AppPages {
       page: () => const FramePage(),
       middlewares: [AuthMiddleWare()],
     ),
-    // GetPage(name: videoDetail, page: () => VideoDetailPage()),
+    GetPage(
+      name: AppRoutes.videoDetail,
+      page: () => VideoDetailPage(),
+    ),
     //登录页
     GetPage(name: AppRoutes.login, page: () => LoginPage())
   ];

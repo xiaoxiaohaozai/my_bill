@@ -6,6 +6,7 @@ import '../common/utils/image_utils.dart';
 import '../data/models/video_mo.dart';
 import '../res/colors.dart';
 import '../res/res.dart';
+import '../routes/app_routes.dart';
 
 /// 视频卡片
 class VideoCard extends StatelessWidget {
@@ -17,7 +18,7 @@ class VideoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Routes.toVideoDetail(videoMo.vid!);
+        AppRoutes.toVideoDetail(videoMo.vid!);
       },
       child: Card(
         color: Colors.white,

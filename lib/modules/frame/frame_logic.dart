@@ -3,7 +3,13 @@ import 'package:get/get.dart';
 
 
 class FrameLogic extends GetxController {
-  late PageController pageController =  PageController();
+  late PageController pageController;
+
+  @override
+  void onInit() {
+    super.onInit();
+    pageController = PageController();
+  }
   @override
   void onClose() {
     pageController.dispose();

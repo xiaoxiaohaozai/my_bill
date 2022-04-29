@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:my_bili/routes/app_routes.dart';
 
 import '../../../common/utils/image_utils.dart';
 import '../../../data/models/banner_mo.dart';
@@ -42,7 +43,7 @@ class RecommendBanner extends StatelessWidget {
   _item(BannerMo bannerMo) {
     return InkWell(
       onTap: () {
-       // Routes.toUrl(bannerMo.url!);
+        AppRoutes.toUrl(bannerMo.url!);
       },
       child: Container(
         padding: padding,

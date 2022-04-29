@@ -14,8 +14,6 @@ import 'getx/services/storage_service.dart';
 class Global {
   // 初始化
   static Future<void> init() async {
-    //flutter核心组件初始化
-    WidgetsFlutterBinding.ensureInitialized();
 
     //强制竖屏
     await SystemChrome.setPreferredOrientations([

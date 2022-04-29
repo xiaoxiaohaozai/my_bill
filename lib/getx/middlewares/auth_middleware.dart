@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_bili/common/utils/log_utils.dart';
 import 'package:my_bili/routes/app_routes.dart';
 
 import '../controllers/user.dart';
@@ -8,7 +9,7 @@ import '../controllers/user.dart';
 class AuthMiddleWare extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
-    print("是否登录${UserStore.to.isLogin}");
+    logger.d("是否登录${UserStore.to.isLogin}");
     if (UserStore.to.isLogin) {
       return null;
     } else {

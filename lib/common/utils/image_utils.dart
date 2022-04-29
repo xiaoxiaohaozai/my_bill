@@ -2,7 +2,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 /// 显示网络图片 ,磁盘缓存
 Widget cachedImage(String url, {double? width, double? height , BoxFit? fit =BoxFit.cover }) {
