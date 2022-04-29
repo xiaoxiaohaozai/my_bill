@@ -6,9 +6,9 @@ class Constants {
   static const ERROR = 3;
 
   /// ---------------- 网络 ----------------
-  static const BASE_URL = "https://api.devio.org/uapi";
-  // static const BASE_URL = "http://localhost:8080/uapi";
-  static const BARRAGE_URL = "wss://api.devio.org/uapi/fa/barrage/";
+  //static const BASE_URL = "https://api.devio.org/uapi";
+   static const BASE_URL = "http://localhost:8080/uapi";
+  // static const BARRAGE_URL = "wss://api.devio.org/uapi/fa/barrage/";
 
   //用户登录后,产生的令牌
   static const BOARDING_PASS = "33665CA3F23FEFE277A747A423BD9D43AF";

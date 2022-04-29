@@ -1,6 +1,8 @@
 import 'package:shelf/shelf_io.dart' as shelf_io;
 import 'package:shelf_proxy/shelf_proxy.dart';
 
+// 执行 dart ./lib/proxy_config.dart
+
 //前端页面访问本地域名
 const String localHost = 'localhost';
 
