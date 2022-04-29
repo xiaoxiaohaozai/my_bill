@@ -5,6 +5,7 @@ import 'package:my_bili/modules/home/home_page.dart';
 import 'package:my_bili/modules/rank/rank_page.dart';
 import 'package:my_bili/res/strings.dart';
 
+import '../../common/utils/view_utils.dart';
 import '../../res/res.dart';
 import '../../widget/keep_alive_wrapper.dart';
 import 'frame_logic.dart';
@@ -15,6 +16,7 @@ class FramePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     var logic = Get.put(FrameLogic());
     return Material(
         child: Column(

@@ -2,10 +2,12 @@ import 'package:get/get.dart';
 import 'package:my_bili/common/app_ext.dart';
 
 import '../../../common/base/controllers/base_page_controller.dart';
+import '../../../common/utils/log_utils.dart';
 import '../../../data/models/banner_mo.dart';
 import '../../../data/models/home_mo.dart';
 import '../../../data/models/video_mo.dart';
 import '../../../data/repositories/bili_repository.dart';
+import '../../../getx/controllers/user.dart';
 import '../../../widget/custom_refresh/refresh_ext.dart';
 import '../home_logic.dart';
 
@@ -25,6 +27,7 @@ class RecommendLogic extends BasePageController {
     bannerList.value = homeLogic.homeMo.bannerList!;
     videoList.value = homeLogic.homeMo.videoList!;
     super.onReady();
+    logger.d("RecommendLogic 是否登录${UserStore.to.isLogin}");
   }
 
   @override

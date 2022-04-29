@@ -8,15 +8,17 @@ import 'package:my_bili/routes/app_pages.dart';
 import 'package:my_bili/routes/app_routes.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import 'common/utils/view_utils.dart';
+
 /// desktop 下拉组件需要支持鼠标  https://flutter.cn/docs/release/breaking-changes/default-scroll-behavior-drag#migration-guide
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices
   @override
   Set<PointerDeviceKind> get dragDevices => {
-    PointerDeviceKind.touch,
-    PointerDeviceKind.mouse,
-    // etc.
-  };
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        // etc.
+      };
 }
 
 /// app 启动时启动的第一个组件
@@ -25,6 +27,8 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 沉浸式状态栏
+    setStatusBarColor();
     // 屏幕适配组件
     return ScreenUtilInit(
         designSize: const Size(375, 797),
