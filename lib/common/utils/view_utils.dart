@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 import '../../res/colors.dart';
 import 'format_util.dart';
@@ -26,7 +27,8 @@ List<Widget> smallIconText(IconData iconData, var text) {
 }
 
 ///border线
-borderLine(BuildContext context, {bottom = true, top = false, color = ColorRes.color_F5F5F9}) {
+borderLine(BuildContext context,
+    {bottom = true, top = false, color = ColorRes.color_F5F5F9}) {
   BorderSide borderSide = BorderSide(width: 0.5, color: color);
   return Border(
       bottom: bottom ? borderSide : BorderSide.none,
@@ -40,7 +42,6 @@ SizedBox hiSpace({double height = 1, double width = 1}) {
 
 ///底部阴影
 BoxDecoration? bottomBoxShadow(BuildContext context) {
-
   return BoxDecoration(color: Colors.white, boxShadow: [
     BoxShadow(
         color: Colors.grey[100]!,
@@ -70,19 +71,26 @@ void showStatusBar(bool isShow) {
 void setStatusBarColor({
   StatusStyle statusStyle = StatusStyle.DARK_CONTENT,
 }) {
+
   Brightness brightness;
-  if (Platform.isIOS) {
+  // 使用原生Platform 判断,web 会报错
+  if (GetPlatform.isIOS) {
     brightness = statusStyle == StatusStyle.LIGHT_CONTENT
         ? Brightness.dark
         : Brightness.light;
-  } else {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: brightness,
+      statusBarBrightness: brightness,
+    ));
+  } else if (GetPlatform.isAndroid) {
     brightness = statusStyle == StatusStyle.LIGHT_CONTENT
         ? Brightness.light
         : Brightness.dark;
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: brightness,
+      statusBarBrightness: brightness,
+    ));
   }
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: brightness,
-    statusBarBrightness: brightness,
-  ));
 }

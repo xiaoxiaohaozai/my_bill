@@ -27,7 +27,7 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 沉浸式状态栏
+    // // 沉浸式状态栏
     setStatusBarColor();
     // 屏幕适配组件
     return ScreenUtilInit(
