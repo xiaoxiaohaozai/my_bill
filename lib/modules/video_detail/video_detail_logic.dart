@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_bili/common/app_ext.dart';
 import 'package:my_bili/common/base/controllers/base_empty_controller.dart';
+import 'package:my_bili/common/utils/view_utils.dart';
 import 'package:my_bili/data/repositories/bili_repository.dart';
 
 import '../../common/constants.dart';
@@ -28,8 +29,11 @@ class VideoDetailLogic extends BaseEmptyController
   @override
   void onInit() {
     super.onInit();
+    setStatusBarColor(statusStyle:StatusStyle.LIGHT_CONTENT);
     tabController = TabController(length: tabs.length, vsync: this);
   }
+
+
 
   @override
   void onReady() {
@@ -76,7 +80,10 @@ class VideoDetailLogic extends BaseEmptyController
 
   @override
   void onClose() {
-    super.onClose();
+    setStatusBarColor(statusStyle:StatusStyle.DARK_CONTENT);
     tabController.dispose();
+    super.onClose();
   }
+
+
 }

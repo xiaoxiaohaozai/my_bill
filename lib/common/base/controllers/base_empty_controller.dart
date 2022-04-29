@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../constants.dart';
 
 /// 缺省页
+/// 增加生命周期 FullLifeCycleController with FullLifeCycleMixin
 abstract class BaseEmptyController extends GetxController {
   ///加载状态  0加载中 1加载成功 2加载数据为空 3加载失败
   var loadState = Constants.LOADING.obs;
