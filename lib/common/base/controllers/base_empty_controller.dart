@@ -1,5 +1,5 @@
-
 import 'package:get/get.dart';
+import 'package:my_bili/common/utils/log_utils.dart';
 
 import '../../constants.dart';
 
@@ -11,7 +11,7 @@ abstract class BaseEmptyController extends GetxController {
 
   ///加载成功，是否显示空页面
   void showSuccess(bool isEmpty) {
-    loadState.value = isEmpty ? Constants.EMPTY: Constants.SUCCESS;
+    loadState.value = isEmpty ? Constants.EMPTY : Constants.SUCCESS;
   }
 
   ///加载失败,显示失败页面
@@ -23,4 +23,5 @@ abstract class BaseEmptyController extends GetxController {
   void showLoading() {
     loadState.value = Constants.LOADING;
   }
+
 }

@@ -10,7 +10,7 @@ import '../../common/utils/loading.dart';
 import '../../data/models/video_detail_mo.dart';
 import '../../data/models/video_mo.dart';
 
-class VideoDetailLogic extends BaseEmptyController
+ class VideoDetailLogic extends BaseEmptyController
     with GetTickerProviderStateMixin {
   late TabController tabController;
 

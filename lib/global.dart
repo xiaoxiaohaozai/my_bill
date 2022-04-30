@@ -30,6 +30,7 @@ class Global {
     }
     //网络组件初始化
     ApiConfig config = ApiConfig(
+        showLog:false,
         baseUrl: Constants.BASE_URL,
         headers: {"course-flag": Constants.COURSE_FLAG},
         cachePath: cachePath);

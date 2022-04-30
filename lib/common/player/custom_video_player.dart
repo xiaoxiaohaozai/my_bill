@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fijkplayer/fijkplayer.dart';
+import 'package:my_bili/common/utils/log_utils.dart';
 
+import '../../application.dart';
 import 'custom_panel.dart';
 
 /// 自定义播放器
@@ -22,13 +24,19 @@ class CustomVideoPlayer extends StatefulWidget {
   State<CustomVideoPlayer> createState() => _CustomVideoPlayerState();
 }
 
-class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
+/// RouteAware 监听当前页面的生命周期
+/// WidgetsBindingObserver 前后台
+class _CustomVideoPlayerState extends State<CustomVideoPlayer>
+    with RouteAware, WidgetsBindingObserver {
   // FijkPlayer实例
   late FijkPlayer player;
+
+  bool isResume = true;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance?.addObserver(this);
     player = FijkPlayer();
     //播放
     player.setDataSource(
@@ -42,6 +50,8 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance?.removeObserver(this);
+    routeObserver.unsubscribe(this);
     player.release();
     super.dispose();
   }
@@ -93,6 +103,44 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
       // 显示的配置
       showConfig: PlayerShowConfig(),
     );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    // 可见时执行
+    if (isResume == false) {
+      return;
+    }
+    if (state == AppLifecycleState.resumed) {
+      loggerNoStack.e("$this,前台");
+      player.start();
+    } else {
+      loggerNoStack.e("$this,后台");
+      player.pause();
+    }
+  }
+
+  @override
+  void didPushNext() {
+    super.didPushNext();
+    isResume = false;
+    loggerNoStack.e("$this,下个界面进入");
+    player.pause();
+  }
+
+  @override
+  void didPopNext() {
+    super.didPopNext();
+    loggerNoStack.e("$this,下个界面退出");
+    isResume = true;
+    player.start();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
   }
 }
 

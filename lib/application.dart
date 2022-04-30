@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:my_bili/common/utils/log_utils.dart';
 import 'package:my_bili/routes/app_pages.dart';
 import 'package:my_bili/routes/app_routes.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import 'common/observers/my_route_observer.dart';
 import 'common/utils/view_utils.dart';
 
 /// desktop 下拉组件需要支持鼠标  https://flutter.cn/docs/release/breaking-changes/default-scroll-behavior-drag#migration-guide
@@ -21,9 +23,15 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
       };
 }
 
+MyRouteObserver<PageRoute> myRouteObserver = MyRouteObserver<PageRoute>();
+
+//监听单个页面
+final RouteObserver<ModalRoute<void>> routeObserver =
+    RouteObserver<ModalRoute<void>>();
+
 /// app 启动时启动的第一个组件
-class Application extends StatelessWidget {
-  const Application({Key? key}) : super(key: key);
+class Application extends StatelessWidget with RouteAware {
+  // const Application({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +51,10 @@ class Application extends StatelessWidget {
               headerBuilder: () => const ClassicHeader(),
               footerBuilder: () => const ClassicFooter(),
               child: GetMaterialApp(
+                navigatorObservers: [
+                  // myRouteObserver,
+                  routeObserver,
+                ],
                 scrollBehavior: MyCustomScrollBehavior(),
                 //全局loading
                 builder: EasyLoading.init(),
@@ -52,5 +64,17 @@ class Application extends StatelessWidget {
             ),
           );
         });
+  }
+
+  @override
+  void didPush() {
+    super.didPush();
+    loggerNoStack.d("didPush");
+  }
+
+  @override
+  void didPop() {
+    super.didPop();
+    loggerNoStack.d("didPush");
   }
 }

@@ -12,7 +12,7 @@ class AppRoutes {
   static const String registration = "/registration";
 
   /// 框架启动
-  static const String frame = "/";
+  static const String frame = "/frame";
 
   /// 视频详情
   static const String videoDetail = "/videoDetail";

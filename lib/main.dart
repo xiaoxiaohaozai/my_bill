@@ -13,7 +13,7 @@ Future<void> main() async {
   // 初始化全局配置
   await Global.init();
   // 启动应用
-  runApp(const Application());
+  runApp( Application());
   //关闭启动页
   FlutterNativeSplash.remove();
 }
