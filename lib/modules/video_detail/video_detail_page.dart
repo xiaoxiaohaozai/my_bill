@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay/flutter_overlay.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +11,7 @@ import 'package:my_bili/modules/video_detail/widget/video_header.dart';
 import 'package:my_bili/modules/video_detail/widget/video_toolbar.dart';
 import 'package:my_bili/widget/custom_top_bar.dart';
 
+import '../../common/barrage/hi_barrage.dart';
 import '../../common/constants.dart';
 import '../../widget/h_video_card.dart';
 import '../../widget/hi_tab.dart';
@@ -21,6 +21,10 @@ class VideoDetailPage extends StatelessWidget {
   late VideoDetailLogic logic;
 
   var vid = Get.arguments[Constants.VID];
+
+  final GlobalKey<HiBarrageState> _barrageKey = GlobalKey<HiBarrageState>();
+
+  VideoDetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,15 +95,15 @@ class VideoDetailPage extends StatelessWidget {
               logic.inputShowing.value = false;
             },
           )).then((value) {
-            //TODO 发送弹幕
+            _barrageKey.currentState?.send(value);
           });
         },
         //弹幕功能开关回调
         onBarrageSwitch: (open) {
           if (open) {
-            //TODO 打开弹幕
+            _barrageKey.currentState?.play();
           } else {
-            //TODO 关闭弹幕
+            _barrageKey.currentState?.pause();
           }
         },
         //正在输入弹幕
@@ -181,7 +185,14 @@ class VideoDetailPage extends StatelessWidget {
           ),
         );
       } else {
-        return CustomVideoPlayer(url: videoMo!.url!);
+        return CustomVideoPlayer(
+          url: videoMo!.url!,
+          barrageUI: HiBarrage(
+            key: _barrageKey,
+            vid: videoMo.vid!,
+            headers: Constants.barrageHeaders(),
+          ),
+        );
       }
     });
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fijkplayer/fijkplayer.dart';
-import 'package:my_bili/common/utils/log_utils.dart';
 
 import '../../application.dart';
 import 'custom_panel.dart';
@@ -31,6 +30,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>
   // FijkPlayer实例
   late FijkPlayer player;
 
+  //是否在前台
   bool isResume = true;
 
   @override
@@ -105,6 +105,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>
     );
   }
 
+  /// 监听app 前后台
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
@@ -113,26 +114,24 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>
       return;
     }
     if (state == AppLifecycleState.resumed) {
-      loggerNoStack.e("$this,前台");
       player.start();
     } else {
-      loggerNoStack.e("$this,后台");
       player.pause();
     }
   }
 
+  /// 下一个界面进入
   @override
   void didPushNext() {
     super.didPushNext();
     isResume = false;
-    loggerNoStack.e("$this,下个界面进入");
     player.pause();
   }
 
+  /// 下一个界面退出
   @override
   void didPopNext() {
     super.didPopNext();
-    loggerNoStack.e("$this,下个界面退出");
     isResume = true;
     player.start();
   }

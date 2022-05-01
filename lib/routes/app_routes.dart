@@ -23,7 +23,7 @@ class AppRoutes {
   /// 跳转视频详情
   static void toVideoDetail(String vid) {
     Get.toNamed(videoDetail,
-        arguments: {Constants.VID: vid}, preventDuplicates: false);
+        arguments: {Constants.VID: vid},preventDuplicates: false);
   }
 
   /// 跳转登录
@@ -33,7 +33,7 @@ class AppRoutes {
 
   /// 跳转首页
   static void toMain() {
-    Get.offAndToNamed(frame);
+    Get.offNamed(frame);
   }
 
   /// 通过url执行相关操作,例如浏览器打开网页
