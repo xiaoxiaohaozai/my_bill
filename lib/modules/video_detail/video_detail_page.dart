@@ -22,7 +22,7 @@ class VideoDetailPage extends StatelessWidget {
 
   var vid = Get.arguments[Constants.VID];
 
-  final GlobalKey<HiBarrageState> _barrageKey = GlobalKey<HiBarrageState>();
+
 
   VideoDetailPage({Key? key}) : super(key: key);
 
@@ -32,8 +32,9 @@ class VideoDetailPage extends StatelessWidget {
     logic = Get.put(VideoDetailLogic(), tag: vid);
     double screenWidth = ScreenUtil().screenWidth;
     double playerHeight = screenWidth * (9 / 16);
-    return Scaffold(
-      body: Column(
+
+    return Material(
+      child: Column(
         children: [
           CustomTopBar(
             color: Colors.black,
@@ -50,10 +51,8 @@ class VideoDetailPage extends StatelessWidget {
   /// 简介和评论
   Widget _buildTabBar() {
     //Material 实现阴影效果
-
     return Material(
       elevation: 0.3,
-      // shadowColor: Colors.grey[100],
       child: Container(
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 10.w),
@@ -95,16 +94,12 @@ class VideoDetailPage extends StatelessWidget {
               logic.inputShowing.value = false;
             },
           )).then((value) {
-            _barrageKey.currentState?.send(value);
+
           });
         },
         //弹幕功能开关回调
         onBarrageSwitch: (open) {
-          if (open) {
-            _barrageKey.currentState?.play();
-          } else {
-            _barrageKey.currentState?.pause();
-          }
+
         },
         //正在输入弹幕
         inputShowing: logic.inputShowing.value,
@@ -188,7 +183,6 @@ class VideoDetailPage extends StatelessWidget {
         return CustomVideoPlayer(
           url: videoMo!.url!,
           barrageUI: HiBarrage(
-            key: _barrageKey,
             vid: videoMo.vid!,
             headers: Constants.barrageHeaders(),
           ),

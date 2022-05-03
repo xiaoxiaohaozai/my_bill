@@ -10,7 +10,7 @@ class BarrageItem extends StatelessWidget {
   final ValueChanged onAnimationComplete;
   final Duration duration; // 每条动画的执行时间
 
-  BarrageItem(
+  const BarrageItem(
       {Key? key,
       required this.id,
       required this.top,

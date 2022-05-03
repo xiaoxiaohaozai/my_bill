@@ -10,7 +10,7 @@ import '../../common/utils/loading.dart';
 import '../../data/models/video_detail_mo.dart';
 import '../../data/models/video_mo.dart';
 
- class VideoDetailLogic extends BaseEmptyController
+class VideoDetailLogic extends BaseEmptyController
     with GetTickerProviderStateMixin {
   late TabController tabController;
 
@@ -29,11 +29,9 @@ import '../../data/models/video_mo.dart';
   @override
   void onInit() {
     super.onInit();
-    setStatusBarColor(statusStyle:StatusStyle.LIGHT_CONTENT);
+    setStatusBarColor(statusStyle: StatusStyle.LIGHT_CONTENT);
     tabController = TabController(length: tabs.length, vsync: this);
   }
-
-
 
   @override
   void onReady() {
@@ -62,9 +60,8 @@ import '../../data/models/video_mo.dart';
     );
   }
 
-
   /// 点赞
-  void likeClick() async{
+  void likeClick() async {
     Loading.toast("暂不支持该功能!");
   }
 
@@ -80,10 +77,8 @@ import '../../data/models/video_mo.dart';
 
   @override
   void onClose() {
-    setStatusBarColor(statusStyle:StatusStyle.DARK_CONTENT);
+    setStatusBarColor(statusStyle: StatusStyle.DARK_CONTENT);
     tabController.dispose();
     super.onClose();
   }
-
-
 }
