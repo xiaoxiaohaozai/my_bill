@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:my_bili/res/colors.dart';
 
 import 'application.dart';
 import 'common/utils/view_utils.dart';
@@ -13,7 +15,7 @@ Future<void> main() async {
   // 初始化全局配置
   await Global.init();
   // 启动应用
-  runApp( Application());
+  runApp( const Application());
   //关闭启动页
   FlutterNativeSplash.remove();
 }

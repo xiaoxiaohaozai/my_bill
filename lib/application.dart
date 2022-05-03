@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:my_bili/common/utils/log_utils.dart';
 import 'package:my_bili/routes/app_pages.dart';
 import 'package:my_bili/routes/app_routes.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -30,13 +29,15 @@ final RouteObserver<ModalRoute<void>> routeObserver =
     RouteObserver<ModalRoute<void>>();
 
 /// app 启动时启动的第一个组件
-class Application extends StatelessWidget with RouteAware {
-  // const Application({Key? key}) : super(key: key);
+class Application extends StatelessWidget {
+  const Application({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // // 沉浸式状态栏
+    // 启用状态栏
+    showStatusBar(true);
     setStatusBarColor();
+
     // 屏幕适配组件
     return ScreenUtilInit(
         designSize: const Size(375, 797),
@@ -64,17 +65,5 @@ class Application extends StatelessWidget with RouteAware {
             ),
           );
         });
-  }
-
-  @override
-  void didPush() {
-    super.didPush();
-    loggerNoStack.d("didPush");
-  }
-
-  @override
-  void didPop() {
-    super.didPop();
-    loggerNoStack.d("didPush");
   }
 }
