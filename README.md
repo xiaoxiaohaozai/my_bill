@@ -1,7 +1,4 @@
----
-theme: github
-highlight: xt256
----
+
 # 前言
 
 第一次接触Flutter还是技术胖的百姓生活+,转眼间几年过去了,Flutter都升级到了2.+版本了,相比以前修改了很多,增加了空安区,还出现GetX,正好手上活不多,索性重学一波Flutter,于是诞生了MyBili
@@ -10,7 +7,9 @@ highlight: xt256
 
 ## 项目展示(GIF)
 
-![mybili.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/795f44b7e4a540cfa37e593771425ca0~tplv-k3u1fbpfcp-watermark.image?)
+<p align="center">
+	<img src="mybili.gif" alt="Sample"  >
+</p>
 
 ## 项目展示(PNG)
 
